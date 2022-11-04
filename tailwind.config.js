@@ -1,9 +1,9 @@
 const colors = require('tailwindcss/colors')
+const withModfyTailwindConfig =
+  require('./dist/tailwind.config.cjs').withModfyTailwindConfig
 
-module.exports = {
+module.exports = withModfyTailwindConfig({
   purge: ['**/*.tsx'],
-  mode: 'jit',
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -15,4 +15,4 @@ module.exports = {
     extend: {}
   },
   plugins: [require('@tailwindcss/forms')]
-}
+})
