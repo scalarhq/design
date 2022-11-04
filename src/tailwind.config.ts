@@ -9,7 +9,9 @@ export const withModfyTailwindConfig = (
     extend: {
       colors: {
         ...config.theme?.extend?.colors,
-        midnightPurple: '#060414'
+        'midnightPurple-100': '#FBFDFE',
+        midnightPurple: '#5850EC',
+        'midnightPurple-900': '#060414'
       }
     }
   }
