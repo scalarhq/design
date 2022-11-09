@@ -7,10 +7,12 @@ export const withModfyTailwindConfig = (
 
   const theme: TailwindConfig['theme'] = {
     extend: {
+      ...config.theme?.extend,
       colors: {
         ...config.theme?.extend?.colors,
         'midnightPurple-100': '#FBFDFE',
         midnightPurple: '#5850EC',
+        'midnightPurple-500': '#5850EC',
         'midnightPurple-900': '#060414'
       }
     }
