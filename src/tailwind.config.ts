@@ -5,6 +5,7 @@ import aspectRatio from '@tailwindcss/aspect-ratio'
 import forms from '@tailwindcss/forms'
 import lineClamp from '@tailwindcss/line-clamp'
 import typography from '@tailwindcss/typography'
+import stackedLayer from './plugins/stackedLayer'
 
 export const withModfyTailwindConfig = (
   config: TailwindConfig
@@ -52,7 +53,8 @@ export const withModfyTailwindConfig = (
     forms,
     aspectRatio,
     lineClamp,
-    typography
+    typography,
+    stackedLayer
   ]
 
   return {
