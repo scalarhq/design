@@ -1,11 +1,47 @@
 import { Config as TailwindConfig } from 'tailwindcss'
-import colors from 'tailwindcss/colors'
 
 import aspectRatio from '@tailwindcss/aspect-ratio'
 import forms from '@tailwindcss/forms'
 import lineClamp from '@tailwindcss/line-clamp'
 import typography from '@tailwindcss/typography'
+
 import stackedLayer from './plugins/stackedLayer'
+
+type Color = {
+  50?: string
+  100: string
+  200: string
+  300: string
+  400: string
+  500: string
+  600: string
+  700: string
+  800: string
+  900: string
+  1000?: string
+}
+
+const Amethyst: Color = {
+  50: '#FBF9FF',
+  100: '#EEE3FF',
+  200: '#D1B7FF',
+  300: '#AF81FF',
+  400: '#9456FF',
+  500: '#7E33FF',
+  600: '#3E06A1',
+  700: '#2D0573',
+  800: '#1E0052',
+  900: '#0D0B1B',
+  1000: '#060414'
+}
+
+const colorToObject = (name: string, color: Color) => {
+  const obj: Record<string, string> = {}
+  Object.entries(color).forEach(([key, value]) => {
+    obj[`${name}-${key}`] = value
+  })
+  return obj
+}
 
 export const withModfyTailwindConfig = (
   config: TailwindConfig
@@ -17,19 +53,7 @@ export const withModfyTailwindConfig = (
       ...config.theme?.extend,
       colors: {
         ...config.theme?.extend?.colors,
-        'midnightPurple-100': '#FBFDFE',
-        midnightPurple: '#5850EC',
-        'midnightPurple-500': '#5850EC',
-        'midnightPurple-900': '#060414',
-        orange: colors.orange,
-        teal: colors.teal,
-        blueGray: { ...colors.slate, 1000: '#0C1322' },
-        amber: colors.amber,
-        coolGray: colors.gray,
-        lime: colors.lime,
-        green: colors.emerald,
-        yellow: colors.amber,
-        purple: colors.violet
+        ...colorToObject('amethyst', Amethyst)
       },
       fontFamily: {
         inter: ['Inter'],
@@ -41,11 +65,6 @@ export const withModfyTailwindConfig = (
         eudoxus: [`'Eudoxus Sans'`]
       }
     }
-  }
-
-  const corePlugins: TailwindConfig['corePlugins'] = {
-    ...config.corePlugins,
-    aspectRatio: false
   }
 
   const plugins: TailwindConfig['plugins'] = [
@@ -60,7 +79,6 @@ export const withModfyTailwindConfig = (
   return {
     ...config,
     theme,
-    corePlugins,
     plugins
   }
 }
