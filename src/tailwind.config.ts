@@ -35,6 +35,19 @@ const Amethyst: Color = {
   1000: '#060414'
 }
 
+const BluePurple: Color = {
+  50: '#e1dcf6',
+  100: '#a093cb',
+  200: '#7a65ba',
+  300: '#624ca7',
+  400: '#51408f',
+  500: '#413077',
+  600: '#362c63',
+  700: '#2c2850',
+  800: '#23203e',
+  900: '#191533'
+}
+
 const colorToObject = (name: string, color: Color) => {
   const obj: Record<string, string> = {}
   Object.entries(color).forEach(([key, value]) => {
@@ -53,7 +66,8 @@ export const withModfyTailwindConfig = (
       ...config.theme?.extend,
       colors: {
         ...config.theme?.extend?.colors,
-        ...colorToObject('amethyst', Amethyst)
+        ...colorToObject('amethyst', Amethyst),
+        ...colorToObject('blue-purple', BluePurple)
       },
       fontFamily: {
         inter: ['Inter'],
